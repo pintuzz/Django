@@ -1,12 +1,22 @@
 from django.shortcuts import render
-from .models import Post,Categories,Author
+from .models import Post
+import datetime
+
 
 # Create your views here.
 
 def Index(request):
 
+    week_ago = datetime.date.today() - datetime.timedelta(days= 7)
+    trends = Post.objects.filter(time_upload__gte = week_ago).order_by('-read_time')
+
     parms = {
-        'post':Post.objects.all(),
+        'post':Post.objects.filter(publish=True),
+        'trends' : trends,
+
+
+
+        
     }
     return render(request,'index.html',parms)
 

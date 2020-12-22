@@ -6,7 +6,7 @@
 {%block body%}
     <div class="site-section py-0">
       <div class="owl-carousel hero-slide owl-style">
-        {% for post in post %}
+        {% for post in post|slice:":3" %}
         <div class="site-section">
           <div class="container">
             <div class="half-post-entry d-block d-lg-flex bg-light">
@@ -24,7 +24,7 @@
                   <span class="d-block">
                     {% for cat in post.categories.all %}
 
-                    <a href="#">{{cat.title}}
+                    <a href="#">{{cat.title}}</a>,
                     
                     {% endfor %}
                   </span>

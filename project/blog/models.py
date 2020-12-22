@@ -28,6 +28,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
-
+    class Meta:
+        ordering = ['-pk']
     def __str__(self):
         return self.title
